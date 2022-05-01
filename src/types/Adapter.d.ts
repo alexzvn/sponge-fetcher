@@ -34,3 +34,5 @@ export interface FileSystemAdapter {
 export interface ExtractorAdapter {
   (content: string): Promise<string>
 }
+
+export type Platform = 'win32' | 'darwin' | 'linux' 
