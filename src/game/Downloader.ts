@@ -34,6 +34,7 @@ const ASSET_FOLDER = 'assets/objects'
 const ASSET_INDEX_FOLDER = 'assets/indexes'
 const ASSET_LOGGER_FOLDER = 'assets/log_configs'
 const LIBRARY_FOLDER = 'libraries'
+const VERSION_FOLDER = 'versions'
 
 const shouldPrepareLibrary = (library: LibraryInterface, isPlatform: (os: string) => boolean) => {
   if (! library.rules) return true
@@ -166,7 +167,7 @@ export default class Downloader {
     }
   }
 
-    /**
+  /**
    * Prepare log settings for game before download
    * 
    * @param manifest manifest of minecraft
@@ -180,6 +181,16 @@ export default class Downloader {
       name: loggings.client.file.id,
       url: loggings.client.file.url,
       destination: await this.path.join(this.workingDir, ASSET_LOGGER_FOLDER, loggings.client.file.id)
+    })
+  }
+
+  protected async prepareClient(manifest: PackageManifestInterface) {
+    const client = await this.path.join(this.workingDir, VERSION_FOLDER, manifest.id, manifest.id + '.jar')
+
+    this.items.push({
+      name: manifest.id + '.jar',
+      url: manifest.downloads.client.url,
+      destination: client
     })
   }
 
@@ -198,7 +209,8 @@ export default class Downloader {
     await Promise.all([
       this.prepareAssets(manifest),
       this.prepareLibraries(manifest),
-      this.prepareLoggings(manifest)
+      this.prepareLoggings(manifest),
+      this.prepareClient(manifest)
     ])
 
     await this.filterExistsDownloadable()
