@@ -4,6 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "declaration": true,
+    "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
@@ -11,7 +12,7 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": ["esnext"],
-    "outDir": "./lib",
+    "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
@@ -27,7 +28,12 @@
   ],
 
   "exclude": [
-    "node_modules",
-    "lib"
+    "node_modules"
   ],
+
+  "ts-node": {
+    "require": [
+      "tsconfig-paths/register"
+    ]
+  }
 }
