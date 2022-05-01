@@ -1,18 +1,26 @@
 {
-  "name": "typescript-blank-template",
-  "version": "1.0.0",
-  "main": "main.ts",
+  "name": "sponge-fetcher",
+  "version": "0.0.1",
+  "author": "alexzvn <alex.zdea@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/alexzvn/swa-token#readme",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "start": "ts-node main.ts",
-    "dev": "nodemon -q --watch .env --watch src/* --watch main.ts --exec \"ts-node main.ts\"",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "ci": "yarn install --frozen-lockfile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "@types/node": "^17.0.8",
-    "dotenv": "^11.0.0",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0",
-    "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.4"
+    "node-ts": "^5.1.2",
+    "typescript": "^4.6.3"
+  },
+  "files": [
+    "lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/alexzvn/swa-token/issues"
   }
 }
