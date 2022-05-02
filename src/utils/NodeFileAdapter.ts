@@ -38,7 +38,7 @@ const adapter: FileSystemAdapter = {
   },
 
   async removeDir(path: string) {
-    return rmdirSync(path)
+    return rmSync(path, { recursive: true })
   }
 }
 

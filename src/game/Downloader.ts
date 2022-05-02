@@ -36,7 +36,7 @@ const ASSET_LOGGER_FOLDER = 'assets/log_configs'
 const LIBRARY_FOLDER = 'libraries'
 const VERSION_FOLDER = 'versions'
 
-const shouldPrepareLibrary = (library: LibraryInterface, isPlatform: (os: string) => boolean) => {
+export const shouldPrepareLibrary = (library: LibraryInterface, isPlatform: (os: string) => boolean) => {
   if (! library.rules) return true
 
   let shouldPrepare = false
@@ -56,7 +56,7 @@ const shouldPrepareLibrary = (library: LibraryInterface, isPlatform: (os: string
   return shouldPrepare
 }
 
-const nativePlatformConverter = (platform: Platform) => {
+export const nativePlatformConverter = (platform: Platform) => {
   if (platform === 'win32') return 'natives-windows'
   if (platform === 'darwin') return 'natives-macos'
   if (platform === 'linux') return 'natives-linux'
